@@ -63,8 +63,10 @@ elif page ==':bar_chart: Gambar Data':
 
 elif page ==':chart_with_upwards_trend: Visualisasi Data':
     st.header('Visualisasi Data')
-    column = st.selectbox('Pilih Kolom Untuk Visualisasi', data.columns)
-    plot_distribution(data,column)
+    columns_to_visualize = data.columns.drop('label')
+    # Pilihan kolom untuk visualisasi tanpa 'Row Labels'
+    column = st.selectbox('Pilih Kolom untuk Visualisasi', columns_to_visualize)
+    plot_distribution(data, column)
     
     st.write(f"""
     Grafik di atas menunjukkan distribusi nilai kolum '{column}'. Garis putus-putus merah menunjukkan rata-rata nilai.
